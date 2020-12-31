@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <div class="row align-items-center justify-content-center">
+    <div>
+      <h1 class="text-primary">
+        Current Player :
+        <span
+          *ngIf="player == 'X'"
+          class="bg-danger rounded-circle text-white px-3"
+          >{{ player }}</span
+        >
+        <span
+          *ngIf="player == 'O'"
+          class="bg-warning rounded-circle text-white px-3"
+          >{{ player }}</span
+        >
+      </h1>
+
+      <button (click)="newGame()" class="btn btn-primary">
+        Start New Game
+      </button>
+
+      <h2 *ngIf="winner">Player {{ winner }} WON!!!</h2>
+
+      <main class="mt-4">
+        <app-square
+          *ngFor="let val of squares; let i = index"
+          [value]="val"
+          (click)="makeMove(i)"
+        ></app-square>
+      </main>
+    </div>
+  </div>
+</div>
